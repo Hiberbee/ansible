@@ -1,0 +1,4 @@
+- name: Install {{ role_name }} packages
+  apt:
+    name: "{{ go_packages }}"
+    state: present

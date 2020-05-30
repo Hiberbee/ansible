@@ -1,0 +1,19 @@
+- name: Add {{ role_name }} repository key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Install {{ role_name }} repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+    state: present
+    update_cache: true
+
+- name: Install {{ role_name }} dependencies
+  apt:
+    package: docker-ce
+
+- name: Start {{ role_name }} service
+  service:
+    state: started
+    name: docker

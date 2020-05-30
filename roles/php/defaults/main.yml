@@ -1,0 +1,21 @@
+php_version: '7.4'
+php_packages:
+  - php-apcu
+  - php-cli
+  - php-cgi
+  - php-bcmath
+  - php-curl
+  - php-ds
+  - php-embed
+  - php-gd
+  - php-geoip
+  - php-intl
+  - php-mbstring
+  - php-memcached
+  - php-mysql
+  - php-opcache
+  - php-pdo
+  - php-sqlite3
+  - php-xml
+  - php-zip
+  - libffi-dev

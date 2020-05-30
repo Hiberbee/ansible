@@ -1,0 +1,6 @@
+ruby_repository: ppa:deadsnakes/ppa
+ruby_version: 2.7
+ruby_packages:
+  - ruby{{ ruby_version }}
+ruby_gems:
+  - bundler

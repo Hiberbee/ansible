@@ -1,0 +1,22 @@
+- hosts: all
+  roles:
+    - fish
+    - git
+
+- hosts: dev
+  roles:
+    - jvm
+    - ruby
+    - python
+    - nodejs
+    - php
+    - go
+
+- hosts: ops
+  roles:
+    - docker
+    - terraform
+    - skaffold
+    - kubernetes
+    - helm
+    - digitalocean

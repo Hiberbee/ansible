@@ -1,0 +1,7 @@
+---
+- name: Install {{ role_name }} client
+  unarchive:
+    remote_src: true
+    src: https://github.com/digitalocean/doctl/releases/download/v{{ digitalocean_version }}/doctl-{{ digitalocean_version }}-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    creates: /usr/local/bin/doctl

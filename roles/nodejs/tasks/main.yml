@@ -1,0 +1,38 @@
+---
+- name: Install {{ role_name }} NVM
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash
+  args:
+    creates: "{{ nvm_path }}/nvm.sh"
+
+- name: Install {{ role_name }} version {{ nodejs_version }}
+  shell: "/usr/bin/fish -C 'nvm install {{ nodejs_version }} --latest-npm'"
+  args:
+    creates: "{{ nvm_path }}/versions/node/v{{ nodejs_version }}/bin/node"
+
+- name: Set {{ role_name }} permissions
+  file:
+    path: "{{ nvm_path }}"
+    state: directory
+    recurse: true
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: Set {{ role_name }} default version {{ nodejs_version }}
+  alternatives:
+    name: node
+    path: "{{ nodejs_path }}/bin/node"
+    link: /usr/local/bin/node
+
+- name: Link {{ role_name }} npm
+  file:
+    state: link
+    src: "{{ nodejs_path }}/bin/npm"
+    dest: /usr/local/bin/npm
+
+- name: Install {{ role_name }} packages
+  npm:
+    name: "{{ npm_package }}"
+    global: true
+  loop: "{{ npm_packages }}"
+  loop_control:
+    loop_var: npm_package

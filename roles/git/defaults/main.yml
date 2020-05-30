@@ -1,0 +1,4 @@
+git_config: {}
+git_repositories: []
+git_packages:
+  - git

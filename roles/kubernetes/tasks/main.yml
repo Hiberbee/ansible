@@ -1,0 +1,7 @@
+---
+- name: Install {{ role_name }} client
+  get_url:
+    url: https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes_version }}/bin/linux/amd64/kubectl
+    dest: /usr/bin/
+    mode: a+x
+    force: true

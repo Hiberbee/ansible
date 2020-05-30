@@ -1,0 +1,10 @@
+---
+- name: Install {{ role_name }} {{ php_version }} extensions
+  apt:
+    name: "{{ php_packages }}"
+
+- name: Set {{ role_name }} default version {{ php_version }}
+  alternatives:
+    name: php
+    path: /usr/bin/php{{ php_version }}
+    link: /usr/local/bin/php

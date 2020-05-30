@@ -1,0 +1,12 @@
+python_repository: ppa:deadsnakes/ppa
+python_version: 3.8
+python_packages:
+  - python{{ python_version }}
+  - python3-pip
+pip_packages:
+  - jq
+  - awscli
+  - bzt
+  - docker-compose
+  - docker
+  - direnv

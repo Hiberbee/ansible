@@ -1,0 +1,21 @@
+- name: Install {{ role_name }} packages
+  apt:
+    name: "{{ git_packages }}"
+
+- name: Configure git
+  git_config:
+    name: "{{ git_config_item.key }}"
+    scope: global
+    value: "{{ git_config_item.value }}"
+  with_dict: "{{ git_config }}"
+  loop_control:
+    loop_var: git_config_item
+
+- name: Clone git projects
+  git:
+    repo: "{{ git_repository.url }}"
+    dest: "{{ git_repository.path }}"
+    update: false
+  loop: "{{ git_repositories }}"
+  loop_control:
+    loop_var: git_repository

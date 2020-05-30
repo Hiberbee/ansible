@@ -1,0 +1,23 @@
+---
+- name: Add {{ role_name }} Debian repository
+  apt_repository:
+    repo: "{{ python_repository }}"
+    update_cache: true
+
+- name: Install {{ role_name }} v{{ python_version }}
+  apt:
+    package: "{{ python_packages }}"
+
+- name: Set {{ role_name }} default version {{ python_version }}
+  alternatives:
+    name: python
+    path: /usr/bin/python{{ python_version }}
+    link: /usr/local/bin/python
+
+- name: Install {{ role_name }} packages
+  pip:
+    name: "{{ pip_package }}"
+    executable: /usr/bin/pip3
+  loop: "{{ pip_packages }}"
+  loop_control:
+    loop_var: pip_package

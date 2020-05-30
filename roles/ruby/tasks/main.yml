@@ -1,0 +1,22 @@
+---
+- name: Add {{ role_name }} Debian repository
+  apt_repository:
+    repo: "{{ ruby_repository }}"
+    update_cache: true
+
+- name: Install {{ role_name }} v{{ ruby_version }}
+  apt:
+    package: "{{ ruby_packages }}"
+
+- name: Set {{ role_name }} default version {{ ruby_version }}
+  alternatives:
+    name: ruby
+    path: /usr/bin/ruby{{ ruby_version }}
+    link: /usr/local/bin/ruby
+
+- name: Install {{ role_name }} gems
+  gem:
+    name: "{{ ruby_gem }}"
+  loop: "{{ ruby_gems }}"
+  loop_control:
+    loop_var: ruby_gem

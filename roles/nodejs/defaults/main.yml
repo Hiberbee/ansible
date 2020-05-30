@@ -1,0 +1,7 @@
+nodejs_version: 14.3.0
+nvm_version: 0.35.3
+nvm_path: "{{ lookup('env', 'HOME') }}/.nvm"
+nodejs_path: "{{ nvm_path }}/versions/node/v{{ nodejs_version }}"
+npm_packages:
+  - yarn
+  - create-react-app
