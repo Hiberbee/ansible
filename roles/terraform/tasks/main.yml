@@ -1,7 +1,7 @@
 ---
 - name: Install {{ role_name }} manager
   unarchive:
-    src: https://github.com/warrensbox/terraform-switcher/releases/download/0.8.832/terraform-switcher_0.8.832_linux_amd64.tar.gz
+    src: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
     remote_src: true
     dest: /usr/local/bin
-    creates: /usr/local/bin/tfswitch
+    creates: /usr/local/bin/terraform
