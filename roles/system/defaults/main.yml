@@ -1,5 +1,6 @@
 debian_packages:
   - gnupg2
+  - net-tools
 
 alpine_packages:
   - openrc

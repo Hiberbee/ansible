@@ -19,13 +19,16 @@
 
 - name: Create {{ role_name }} PID directory
   file:
-    path: "{{ sshd_pid_path }}"
+    path: "{{ directory }}"
     state: directory
+  loop:
+    - "{{ sshd_pid_path }}"
+    - "{{ sshd_config_path }}"
 
 - name: Configure {{ role_name }} from template
   template:
-    src: wsl_config.conf.j2
-    dest: /etc/ssh/sshd_config
+    src: wsl.conf.j2
+    dest: "{{ sshd_config_path }}/wsl.conf"
     validate: "{{ sshd_binary }} -t -f %s"
 
 - name: Add {{ role_name }} authorized keys

@@ -37,7 +37,7 @@ fisher_packages:
   - jorgebucaran/fish-getopts
   - reitzig/sdkman-for-fish
 
-fish_binary_path: /usr/bin/fish
+fish_binary_path: /bin/fish
 config_dir: "{{ lookup('env', 'HOME') }}/.config"
 starship_binary_path: /usr/local/bin/starship
 starship_url: https://starship.rs/install.sh

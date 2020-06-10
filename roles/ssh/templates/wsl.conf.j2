@@ -1,6 +1,2 @@
-Compression yes
-ListenAddress 0.0.0.0
-GSSAPIAuthentication no
-PubkeyAuthentication yes
 HostKey {{ lookup('env', 'HOME') }}/.ssh/id_rsa
 AuthorizedKeysFile {{ lookup('env', 'HOME') }}/.ssh/authorized_keys
