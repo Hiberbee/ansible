@@ -13,8 +13,13 @@
 
 - name: Create {{ role_name }} config directory
   file:
-    path: /etc/docker
+    path: "{{ directory }}"
     state: directory
+  loop:
+    - /root/.docker
+    - /etc/docker
+  loop_control:
+    loop_var: directory
 
 - name: Configure {{ role_name }}
   template:
