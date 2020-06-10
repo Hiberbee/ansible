@@ -1,0 +1,9 @@
+- name: Install {{ role_name }} dependencies
+  apt:
+    package: "{{ debian_packages }}"
+    update_cache: true
+
+- name: Update {{ role_name }} packages
+  apt:
+    upgrade: full
+    update_cache: true

@@ -31,17 +31,16 @@
   changed_when: False
   register: starship_binary
 
-- when: not starship_binary.stat.exists
-  name: Install starship prompt
-  shell: curl {{ starship_url }} | bash
-  args:
-    creates: "{{ starship_binary_path }}"
-  environment:
-    FORCE: "1"
+- name: Install starship prompt
+  get_url:
+    url: "{{ starship_url }}"
+    dest: /tmp/starship.sh
+    mode: a+x
+  notify: starship
 
 - name: Configure {{ role_name }} from templates
   template:
-    src: "{{ config_file}}.j2"
+    src: "{{ config_file }}.j2"
     dest: "{{ config_dir }}/{{ config_file }}"
   loop:
     - starship.toml
@@ -53,17 +52,13 @@
   template:
     src: fish/fishfile.j2
     dest: "{{ fish_config_dir }}/fishfile"
-  register: fishfile
 
 - name: Install fisher
   get_url:
     url: https://git.io/fisher
     dest: "{{ fish_config_dir }}/functions/fisher.fish"
-  when: fishfile.changed
-
-- name: Install {{ role_name }} plugins
-  shell: "{{ fish_binary_path }} -C 'fisher'"
-  changed_when: false
+    mode: a+x
+  notify: fisher
 
 - name: Configure {{ role_name }} colors
   blockinfile:

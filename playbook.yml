@@ -1,5 +1,8 @@
 - hosts: all
   roles:
+    - system
+    - wsl
+    - ssh
     - fish
     - git
 
@@ -14,6 +17,7 @@
 
 - hosts: ops
   roles:
+    - aws
     - docker
     - terraform
     - skaffold

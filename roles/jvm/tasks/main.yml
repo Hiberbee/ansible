@@ -3,7 +3,9 @@
   apt:
     package: "{{ sdkman_dependencies }}"
 
-- name: Install {{ role_name }} SDK manager
-  shell: curl -s https://get.sdkman.io | bash
-  args:
-    creates: "{{ lookup('env', 'HOME') }}/.sdkman"
+- name: Download {{ role_name }} SDK manager installer script
+  get_url:
+    url: https://get.sdkman.io
+    dest: /tmp/sdkman.sh
+    mode: a+x
+  notify: sdkman

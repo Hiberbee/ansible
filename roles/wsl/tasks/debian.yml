@@ -1,0 +1,8 @@
+- name: Install {{ role_name }} shell utilities repository key
+  apt_key:
+    url: "{{ wsl_utilities_deb_repository_key }}"
+
+- name: Install {{ role_name }} utilities repository
+  apt_repository:
+    repo: "{{ wsl_utilities_deb_repository }}"
+    update_cache: true

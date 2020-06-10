@@ -1,0 +1,11 @@
+- name: fisher
+  shell: fisher
+  args:
+    executable: "{{ fish_binary_path }}"
+
+- name: starship
+  shell: /tmp/starship.sh
+  args:
+    creates: "{{ starship_binary_path }}"
+  environment:
+    FORCE: "1"

@@ -1,0 +1,5 @@
+- name: sdkman
+  shell: /tmp/sdkman.sh
+  args:
+    executable: /bin/bash
+    creates: "{{ lookup('env', 'HOME') }}/.sdkman"

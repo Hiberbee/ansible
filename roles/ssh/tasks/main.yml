@@ -1,0 +1,51 @@
+- name: Fix {{ role_name }} keys permissions
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.ssh/{{ public_key }}.pub"
+    mode: '0640'
+  loop: "{{ ssh_keys }}"
+  loop_control:
+    loop_var: public_key
+
+- name: Fix {{ role_name }} keys permissions
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.ssh/{{ private_key }}"
+    mode: '0600'
+  loop: "{{ ssh_keys }}"
+  loop_control:
+    loop_var: private_key
+
+- name: Create {{ role_name }} PID directory
+  file:
+    path: "{{ sshd_pid_path | dirname }}"
+    state: directory
+
+- name: Configure {{ role_name }} from template
+  template:
+    src: wsl_config.conf.j2
+    dest: /etc/ssh/sshd_config.d/wsl_config.conf
+    validate: "{{ sshd_binary }} -t -f %s"
+
+- name: Add {{ role_name }} authorized keys
+  authorized_key:
+    state: present
+    user: "{{ ansible_user }}"
+    key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/' + public_key + '.pub') }}"
+  loop: "{{ ssh_keys }}"
+  loop_control:
+    loop_var: public_key
+
+- name: Install {{ role_name }} systemd service
+  template:
+    src: "{{ template }}.j2"
+    dest: /etc/systemd/system/{{ template }}
+  loop:
+    - sshd.service
+    - sshd.socket
+  loop_control:
+    loop_var: template
+
+- name: Service enabled and running
+  service:
+    name: ssh
+    enabled: true
+    state: started

@@ -1,12 +1,16 @@
-wsl_utilities_repository: "deb https://access.patrickwu.space/wslu/debian buster main"
-wsl_utilities_repository_key: https://access.patrickwu.space/wslu/public.asc
-wsl_utilities_dependencies:
-  - wslu
+wsl_utilities_deb_repository: "deb https://access.patrickwu.space/wslu/debian buster main"
+wsl_utilities_deb_repository_key: "https://access.patrickwu.space/wslu/public.asc"
 wsl_config:
-  user: root
+  user:
+    default: "root"
   automount:
     enabled: "false"
-    options: metadata,umask=22,fmask=11
+    root: "/"
+    options: "metadata,umask=22,fmask=11"
+    mount_fs_tab: "false"
+  network:
+    generate_hosts: "true"
+    generate_resolv_conf: "true"
   interop:
     enabled: "false"
     append_windows_path: "false"

@@ -1,19 +1,70 @@
 - name: Add {{ role_name }} repository key
   apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
+    url: "{{ docker_deb_repository_key }}"
 
 - name: Install {{ role_name }} repository
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-    state: present
+    repo: "{{ docker_deb_repository }}"
     update_cache: true
 
 - name: Install {{ role_name }} dependencies
   apt:
     package: docker-ce
 
+- name: Configure {{ role_name }}
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+
+- name: Configure {{ role_name }} systemd service
+  template:
+    src: "{{ template }}.j2"
+    dest: /etc/systemd/system/{{ template }}
+  loop:
+    - docker.service
+    - docker.socket
+  loop_control:
+    loop_var: template
+
 - name: Start {{ role_name }} service
   service:
     state: started
     name: docker
+    enabled: true
+
+- name: Create {{ role_name }} registry credentials
+  copy:
+    content: "{{ docker_registry_htpasswd }}"
+    dest: "{{ docker_registry_htpasswd_path }}"
+  loop:
+    - docker.service
+    - docker.socket
+  loop_control:
+    loop_var: template
+
+- name: Start {{ role_name }} service
+  docker_volume:
+    name: registry
+    state: present
+
+- name: Start {{ role_name }} registry container
+  docker_container:
+    restart_policy: always
+    name: registry
+    image: library/registry:2
+    ports:
+      - 5000:5000
+    env:
+      REGISTRY_HTTP_SECRET: docker
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      REGISTRY_AUTH_HTPASSWD_PATH: "{{ docker_registry_htpasswd_path }}"
+    volumes:
+      - registry:/var/lib/registry
+      - "{{ docker_registry_htpasswd_path }}:{{ docker_registry_htpasswd_path }}"
+
+- name: Authenticate {{ role_name }} registry
+  docker_login:
+    url: 127.0.0.1:5000
+    username: "{{ docker_registry_username }}"
+    password: "{{ docker_registry_password }}"

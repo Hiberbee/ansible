@@ -1,10 +1,16 @@
 [automount]
 enabled = {{ wsl_config.automount.enabled }}
-options = {{ wsl_config.automount.options }}
+root = {{ wsl_config.automount.root }}
+options = "{{ wsl_config.automount.options }}"
+mountFsTab = {{ wsl_config.automount.mount_fs_tab }}
+
+[network]
+generateHosts = {{ wsl_config.network.generate_hosts }}
+generateResolvConf = {{ wsl_config.network.generate_resolv_conf }}
 
 [interop]
 enabled = {{ wsl_config.interop.enabled }}
 appendWindowsPath = {{ wsl_config.interop.append_windows_path }}
 
 [user]
-default = "{{ wsl_config.user }}"
+default = "{{ wsl_config.user.default }}"

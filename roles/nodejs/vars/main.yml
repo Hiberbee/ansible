@@ -1,0 +1,8 @@
+nodejs_version: "14.x"
+npm_config_unsafe_perm: "true"
+nodejs_npm_global_packages:
+  - yarn
+  - create-react-app
+  - yo
+  - expo-cli
+

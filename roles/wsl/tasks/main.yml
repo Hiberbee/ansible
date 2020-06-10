@@ -1,15 +1,5 @@
-- name: Install {{ role_name }} shell utilities repository key
-  apt_key:
-    url: "{{ wsl_utilities_repository_key }}"
-
 - name: Install {{ role_name }} utilities repository
-  apt_repository:
-    repo: "{{ wsl_utilities_repository }}"
-    update_cache: true
-
-- name: Install {{ role_name }} utilities
-  apt:
-    package: "{{ wsl_utilities_dependencies }}"
+  include_tasks: "{{ ansible_os_family | lower }}.yml"
 
 - name: Configure {{ role_name }}
   template:

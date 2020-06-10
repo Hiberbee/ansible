@@ -29,7 +29,6 @@ command_abbreviations:
   s: skaffold
 
 fisher_packages:
-  - FabioAntunes/fish-nvm
   - barnybug/docker-fish-completion
   - edc/bass
   - evanlucas/fish-kubectl-completions

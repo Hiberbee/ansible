@@ -1,0 +1,28 @@
+---
+dependencies:
+  - geerlingguy.nodejs
+galaxy_info:
+  role_name: nodejs
+  author: askent
+  description: Java for Linux
+  company: "Hiberbee"
+  license: "license (MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: Debian
+      versions:
+        - wheezy
+        - jessie
+        - stretch
+        - buster
+    - name: Ubuntu
+      versions:
+        - precise
+        - trusty
+        - xenial
+        - bionic
+        - focal
+  galaxy_tags:
+    - development
+    - nodejs
+    - web

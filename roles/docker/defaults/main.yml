@@ -1,2 +1,8 @@
+docker_deb_repository_key: "https://download.docker.com/linux/ubuntu/gpg"
+docker_deb_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+docker_registry_username: docker
+docker_registry_password: "{{ docker_registry_username }}"
+docker_registry_htpasswd: "{{ docker_registry_username }}:$2y$05$gHSPPUG5HCjVxfZD8RVc4OHBbMWnaJoboZBL9DuwBGBhUwZzDKQLG" # docker:docker
+docker_registry_htpasswd_path: "/root/.docker/htpasswd"
 docker_packages:
   - docker-ce

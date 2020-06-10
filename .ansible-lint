@@ -1,0 +1,6 @@
+parseable: true
+quiet: true
+skip_list:
+  - 204 # Lines should be no longer than 160 chars
+  - 305 # Use shell only when shell functionality is required
+  - 401 # Git checkouts must contain explicit version
