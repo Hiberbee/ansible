@@ -45,13 +45,10 @@
   loop:
     - starship.toml
     - fish/config.fish
+    - fish/fish_variables
+    - fish/fish_variables
   loop_control:
     loop_var: config_file
-
-- name: Configure {{ role_name }} from templates
-  template:
-    src: fish/fishfile.j2
-    dest: "{{ fish_config_dir }}/fishfile"
 
 - name: Install fisher
   get_url:
@@ -59,40 +56,6 @@
     dest: "{{ fish_config_dir }}/functions/fisher.fish"
     mode: a+x
   notify: fisher
-
-- name: Configure {{ role_name }} colors
-  blockinfile:
-    path: "{{ fish_config_dir }}/fish_variables"
-    block: |
-      SETUVAR fish_color_autosuggestion:yellow
-      SETUVAR fish_color_cancel:normal
-      SETUVAR fish_color_command:brgreen
-      SETUVAR fish_color_comment:969696
-      SETUVAR fish_color_cwd:cyan
-      SETUVAR fish_color_cwd_root:brcyan
-      SETUVAR fish_color_end:red
-      SETUVAR fish_color_error:red
-      SETUVAR fish_color_escape:brmagenta
-      SETUVAR fish_color_history_current:brcyan
-      SETUVAR fish_color_host:green
-      SETUVAR fish_color_host_remote:red
-      SETUVAR fish_color_match:green
-      SETUVAR fish_color_normal:brwhite
-      SETUVAR fish_color_operator:brred
-      SETUVAR fish_color_param:magenta
-      SETUVAR fish_color_quote:bryellow
-      SETUVAR fish_color_redirection:brred
-      SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d969696
-      SETUVAR fish_color_selection:brcyan
-      SETUVAR fish_color_status:yellow
-      SETUVAR fish_color_user:green
-      SETUVAR fish_color_valid_path:brblue
-      SETUVAR fish_greeting:''
-      SETUVAR fish_key_bindings:fish_default_key_bindings
-      SETUVAR fish_pager_color_completion:white
-      SETUVAR fish_pager_color_description:969696
-      SETUVAR fish_pager_color_prefix:brmagenta
-      SETUVAR fish_pager_color_progress:cyan
 
 - name: Install {{ role_name }} ssh extension
   unarchive:
