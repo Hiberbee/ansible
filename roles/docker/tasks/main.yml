@@ -11,6 +11,11 @@
   apt:
     package: docker-ce
 
+- name: Create {{ role_name }} config directory
+  file:
+    path: /etc/docker
+    state: directory
+
 - name: Configure {{ role_name }}
   template:
     src: daemon.json.j2
