@@ -5,7 +5,7 @@ jobs:
     name: Lint Ansible roles
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
       - name: ansible-lint
-        uses: ansible/ansible-lint-action@v4.1.0.post0
-        with:
-          targets: playbook.yml
+        uses: ansible/ansible-lint-action@v4.1.0
