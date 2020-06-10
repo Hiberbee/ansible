@@ -44,13 +44,8 @@
 
 - name: Install {{ role_name }} systemd service
   template:
-    src: "{{ template }}.j2"
-    dest: /etc/systemd/system/{{ template }}
-  loop:
-    - sshd.service
-    - sshd.socket
-  loop_control:
-    loop_var: template
+    src: "sshd.service.j2"
+    dest: /etc/systemd/system/sshd.service
 
 - name: Service enabled and running
   service:
