@@ -1,2 +1,6 @@
 debian_packages:
   - gnupg2
+
+alpine_packages:
+  - openrc
+  - nano

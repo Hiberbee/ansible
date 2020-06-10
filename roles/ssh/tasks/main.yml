@@ -1,3 +1,6 @@
+- name: Install {{ role_name }} dependencies
+  include_tasks: "{{ ansible_os_family | lower }}.yml"
+
 - name: Fix {{ role_name }} keys permissions
   file:
     path: "{{ lookup('env', 'HOME') }}/.ssh/{{ public_key }}.pub"

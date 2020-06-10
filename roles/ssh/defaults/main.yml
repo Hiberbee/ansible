@@ -3,3 +3,7 @@ ssh_keys:
   - id_rsa
 sshd_binary: /usr/sbin/sshd
 sshd_pid_path: /run/sshd.pid
+debian_packages:
+  - ssh
+alpine_packages:
+  - openssh
