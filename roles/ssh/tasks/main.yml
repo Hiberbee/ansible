@@ -24,6 +24,8 @@
   loop:
     - "{{ sshd_pid_path }}"
     - "{{ sshd_config_path }}"
+  loop_control:
+    loop_var: directory
 
 - name: Configure {{ role_name }} from template
   template:
