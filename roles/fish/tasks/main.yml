@@ -46,7 +46,7 @@
     - starship.toml
     - fish/config.fish
     - fish/fish_variables
-    - fish/fish_variables
+    - fish/fishfile
   loop_control:
     loop_var: config_file
 
