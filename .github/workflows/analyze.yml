@@ -3,7 +3,7 @@ on: push
 jobs:
   ansible-lint:
     name: Lint Ansible roles
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: ansible-lint
         uses: ansible/ansible-lint-action@v4.1.0.post0
