@@ -4,8 +4,9 @@
     executable: "{{ fish_binary_path }}"
 
 - name: starship
-  shell: /tmp/starship.sh
+  shell: "/tmp/starship.sh --yes"
   args:
+    executable: /bin/bash
     creates: "{{ starship_binary_path }}"
   environment:
     FORCE: "1"
