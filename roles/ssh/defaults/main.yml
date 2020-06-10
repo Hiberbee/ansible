@@ -2,7 +2,7 @@ ssh_keys:
   - id_ed25519
   - id_rsa
 sshd_binary: /usr/sbin/sshd
-sshd_pid_path: /run/sshd.pid
+sshd_pid_path: /run/sshd
 debian_packages:
   - ssh
 alpine_packages:

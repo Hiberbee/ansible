@@ -19,7 +19,7 @@
 
 - name: Create {{ role_name }} PID directory
   file:
-    path: "{{ sshd_pid_path | dirname }}"
+    path: "{{ sshd_pid_path }}"
     state: directory
 
 - name: Configure {{ role_name }} from template
