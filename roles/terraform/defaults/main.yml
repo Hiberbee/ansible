@@ -1,1 +1,2 @@
-terraform_version: 0.13.0-beta1
+terraform_version: 0.13.0-beta2
+bin_dir: /usr/local/bin

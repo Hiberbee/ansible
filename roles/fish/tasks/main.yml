@@ -19,47 +19,15 @@
     user: "{{ ansible_user }}"
     shell: "{{ fish_binary_path }}"
 
-- name: Check if {{ role_path }} configs directory exist
-  file:
-    state: directory
-    recurse: true
-    dest: "{{ fish_config_dir }}/functions"
-
-- name: Check if starship is installed
-  stat:
-    path: '{{ starship_binary_path }}'
-  changed_when: False
-  register: starship_binary
-
-- name: Install starship prompt
+- name: Download {{ role_name }} setup script
   get_url:
-    url: "{{ starship_url }}"
-    dest: /tmp/starship.sh
-    mode: a+x
-  notify: starship
+    url: "{{ fish_setup_script_url }}"
+    dest: /tmp/setup-fish.sh
+  notify: setup_fish
 
-- name: Configure {{ role_name }} from templates
-  template:
-    src: "{{ config_file }}.j2"
-    dest: "{{ config_dir }}/{{ config_file }}"
-  loop:
-    - starship.toml
-    - fish/config.fish
-    - fish/fish_variables
-    - fish/fishfile
-  loop_control:
-    loop_var: config_file
-
-- name: Install fisher
+- name: Install {{ role_name }} dependency manager
   get_url:
     url: https://git.io/fisher
     dest: "{{ fish_config_dir }}/functions/fisher.fish"
     mode: a+x
   notify: fisher
-
-- name: Install {{ role_name }} ssh extension
-  unarchive:
-    src: https://github.com/xxh/xxh-portable/raw/master/result/xxh-portable-musl-alpine-Linux-x86_64.tar.gz
-    remote_src: true
-    dest: /usr/local/bin/
-    creates: xxh

@@ -1,6 +1,6 @@
 ---
 - name: Install {{ role_name }}
   get_url:
-    url: https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+    url: https://storage.googleapis.com/skaffold/releases/v{{ skaffold_version }}/skaffold-linux-amd64
     dest: /usr/local/bin/skaffold
     mode: a+x

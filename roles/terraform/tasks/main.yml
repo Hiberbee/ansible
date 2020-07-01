@@ -1,7 +1,8 @@
 ---
-- name: Install {{ role_name }} manager
+- name: Install {{ role_name }} v{{ terraform_version }}
   unarchive:
     src: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
     remote_src: true
-    dest: /usr/local/bin
-    creates: /usr/local/bin/terraform
+    dest: "{{ bin_dir }}"
+    creates: "{{ bin_dir }}/terraform"
+    mode: a+x

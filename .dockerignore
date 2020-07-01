@@ -1,4 +1,7 @@
+.git
+.github
 .idea
 Dockerfile
-README.md
 LICENSE
+README.md
+*lint

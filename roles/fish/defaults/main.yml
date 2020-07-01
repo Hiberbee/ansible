@@ -1,10 +1,10 @@
 fish_repository: ppa:fish-shell/release-3
+fish_setup_script_url: https://raw.githubusercontent.com/Hiberbee/fish-shell/master/init.sh
 ccat_url: https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
 paths:
   - /usr/local/bin
 fish_packages:
   - fish
-  - fzf
 env_vars:
   COLORTERM: truecolor
   DOCKER_BUILDKIT: 1
@@ -14,31 +14,5 @@ env_vars:
   HELMFILE_EXPERIMENTAL: 1
   HELM_EXPERIMENTAL_OCI: 1
   MINIKUBE_IN_STYLE: false
-command_abbreviations:
-  a: aws
-  c: composer
-  cst: container-structure-test
-  d: docker
-  g: git
-  j: java
-  h: helm
-  k: kubectl
-  m: minikube
-  p: phing
-  t: terraform
-  s: skaffold
-
-fisher_packages:
-  - barnybug/docker-fish-completion
-  - edc/bass
-  - evanlucas/fish-kubectl-completions
-  - franciscolourenco/done
-  - jethrokuan/fzf
-  - jorgebucaran/fish-getopts
-  - reitzig/sdkman-for-fish
-
 fish_binary_path: /bin/fish
-config_dir: "{{ lookup('env', 'HOME') }}/.config"
-starship_binary_path: /usr/local/bin/starship
-starship_url: https://starship.rs/install.sh
-fish_config_dir: "{{ config_dir }}/fish"
+fish_config_dir: "{{ lookup('env', 'HOME') }}/.config/fish"

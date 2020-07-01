@@ -1,6 +1,8 @@
 debian_packages:
   - gnupg2
   - net-tools
+  - curl
+  - netcat
 
 alpine_packages:
   - openrc

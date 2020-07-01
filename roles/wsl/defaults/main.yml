@@ -4,10 +4,10 @@ wsl_config:
   user:
     default: "root"
   automount:
-    enabled: "false"
+    enabled: "true"
     root: "/"
-    options: "metadata,umask=22,fmask=11"
-    mount_fs_tab: "false"
+    options: "metadata,umask=22,fmask=111"
+    mount_fs_tab: "true"
   network:
     generate_hosts: "true"
     generate_resolv_conf: "true"

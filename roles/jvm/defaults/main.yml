@@ -1,3 +1,4 @@
+sdkman_url: https://get.sdkman.io
 sdkman_dependencies:
   - zip
   - unzip

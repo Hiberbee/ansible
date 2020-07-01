@@ -9,4 +9,3 @@ pip_packages:
   - bzt
   - docker-compose
   - docker
-  - direnv

@@ -1,0 +1,17 @@
+name: Lint workflow
+on: [push]
+jobs:
+  build:
+    name: Lint Code Base
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Lint Code
+        uses: docker://github/super-linter:v2.2.0
+        env:
+          LINTER_RULES_PATH: ${{ github.workspace }}
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_ANSIBLE: true
+          VALIDATE_YAML: true
+          VALIDATE_DOCKER: true

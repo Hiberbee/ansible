@@ -3,10 +3,8 @@
   args:
     executable: "{{ fish_binary_path }}"
 
-- name: starship
-  shell: "/tmp/starship.sh --yes"
+- name: setup_fish
+  shell: "/tmp/setup-fish.sh"
   args:
     executable: /bin/bash
     creates: "{{ starship_binary_path }}"
-  environment:
-    FORCE: "1"

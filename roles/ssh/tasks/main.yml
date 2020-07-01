@@ -1,6 +1,11 @@
 - name: Install {{ role_name }} dependencies
   include_tasks: "{{ ansible_os_family | lower }}.yml"
 
+- name: Check if {{ role_name }} directory exists
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.ssh/"
+  register: ssh_directory
+
 - name: Fix {{ role_name }} keys permissions
   file:
     path: "{{ lookup('env', 'HOME') }}/.ssh/{{ public_key }}.pub"
@@ -8,6 +13,7 @@
   loop: "{{ ssh_keys }}"
   loop_control:
     loop_var: public_key
+  when: ssh_directory.stat.exists
 
 - name: Fix {{ role_name }} keys permissions
   file:
@@ -16,6 +22,7 @@
   loop: "{{ ssh_keys }}"
   loop_control:
     loop_var: private_key
+  when: ssh_directory.stat.exists
 
 - name: Create {{ role_name }} PID directory
   file:
@@ -26,12 +33,14 @@
     - "{{ sshd_config_path }}"
   loop_control:
     loop_var: directory
+  when: ssh_directory.stat.exists
 
 - name: Configure {{ role_name }} from template
   template:
     src: wsl.conf.j2
     dest: "{{ sshd_config_path }}/wsl.conf"
     validate: "{{ sshd_binary }} -t -f %s"
+  when: ssh_directory.stat.exists
 
 - name: Add {{ role_name }} authorized keys
   authorized_key:
@@ -41,14 +50,17 @@
   loop: "{{ ssh_keys }}"
   loop_control:
     loop_var: public_key
+  when: ssh_directory.stat.exists
 
 - name: Install {{ role_name }} systemd service
   template:
     src: "sshd.service.j2"
     dest: /etc/systemd/system/sshd.service
+  when: ssh_directory.stat.exists
 
 - name: Service enabled and running
   service:
     name: ssh
     enabled: true
     state: started
+  when: ssh_directory.stat.exists

@@ -1,3 +1,4 @@
+---
 - name: Add {{ role_name }} repository key
   apt_key:
     url: "{{ docker_deb_repository_key }}"
@@ -78,3 +79,15 @@
     url: 127.0.0.1:5000
     username: "{{ docker_registry_username }}"
     password: "{{ docker_registry_password }}"
+
+- name: Start {{ role_name }} API container
+  docker_container:
+    restart_policy: always
+    name: docker
+    image: alpine/socat
+    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+    ports:
+      - 127.0.0.1:2376:2375
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
