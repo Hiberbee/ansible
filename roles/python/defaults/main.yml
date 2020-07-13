@@ -7,5 +7,4 @@ pip_packages:
   - jq
   - awscli
   - bzt
-  - docker-compose
-  - docker
+

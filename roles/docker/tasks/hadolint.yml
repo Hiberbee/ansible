@@ -1,0 +1,6 @@
+---
+- name: Install hadolint
+  get_url:
+    url: "{{ hadolint_url }}"
+    dest: /usr/local/bin/hadolint
+    mode: a+x

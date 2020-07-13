@@ -2,5 +2,11 @@
 - name: Install {{ role_name }}
   get_url:
     url: "{{ skaffold_url }}"
-    dest: /usr/local/bin/skaffold
+    dest: "{{ bin_dir }}/skaffold"
+    mode: a+x
+
+- name: Install container structure test
+  get_url:
+    url: "{{ container_structure_test_url }}"
+    dest: "{{ bin_dir }}/container-structure-test"
     mode: a+x

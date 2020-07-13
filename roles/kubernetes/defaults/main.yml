@@ -4,3 +4,9 @@ kops_version: 1.17.0
 kops_url: https://github.com/kubernetes/kops/releases/download/v{{ kops_version }}/kops-linux-amd64
 minikube_version: 1.11.0
 minikube_url: https://storage.googleapis.com/minikube/releases/v{{ minikube_version }}/minikube-linux-amd64
+crictl_version: 1.17.0
+crictl_url: https://github.com/kubernetes-sigs/cri-tools/releases/download/v{{ crictl_version }}/crictl-v{{ crictl_version }}-linux-amd64.tar.gz
+critest_version: 1.17.0
+critest_url: https://github.com/kubernetes-sigs/cri-tools/releases/download/v{{ critest_version }}/critest-v{{ critest_version }}-linux-amd64.tar.gz
+krew_version: 0.3.4
+krew_url: https://github.com/kubernetes-sigs/krew/releases/download/v{{ krew_version }}/krew.tar.gz

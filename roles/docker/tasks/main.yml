@@ -12,6 +12,14 @@
   apt:
     package: docker-ce
 
+- name: Install {{ role_name }} python packages
+  pip:
+    name: "{{ pip_package }}"
+    executable: /usr/bin/pip3
+  loop: "{{ pip_packages }}"
+  loop_control:
+    loop_var: pip_package
+
 - name: Create {{ role_name }} config directory
   file:
     path: "{{ directory }}"
@@ -37,14 +45,15 @@
   loop_control:
     loop_var: template
 
-- name: Start {{ role_name }} service
-  service:
-    state: started
-    name: docker
-    enabled: true
-
 - name: Setup {{ role_name }} registry
   include_tasks: registry.yml
 
 - name: Setup {{ role_name }} tools
-  include_tasks: tools.yml
+  include_tasks: hadolint.yml
+
+- name: Start {{ role_name }} service
+  service:
+    name: docker
+    state: started
+    enabled: true
+  when: docker_service_started

@@ -1,0 +1,11 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+metadata:
+  name: ansible-collection-devops
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+    - image: ansible/ubuntu
+      docker:
+        target: ubuntu

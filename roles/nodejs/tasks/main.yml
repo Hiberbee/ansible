@@ -1,4 +1,1 @@
 ---
-- name: Install {{ role_name }}
-  include_role:
-    name: geerlingguy.nodejs

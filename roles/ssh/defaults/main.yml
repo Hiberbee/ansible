@@ -8,3 +8,4 @@ debian_packages:
   - ssh
 alpine_packages:
   - openssh
+ssh_service_started: false

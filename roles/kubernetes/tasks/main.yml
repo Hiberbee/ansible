@@ -2,20 +2,44 @@
 - name: Install {{ role_name }} CLI client
   get_url:
     url: "{{ kubernetes_url }}"
-    dest: /usr/local/bin/kubectl
+    dest: "{{ bin_dir }}/kubectl"
     mode: a+x
     force: true
 
 - name: Install {{ role_name }} Kops client
   get_url:
     url: "{{ kops_url }}"
-    dest: /usr/local/bin/kops
+    dest: "{{ bin_dir }}/kops"
     mode: a+x
     force: true
 
 - name: Install {{ role_name }} Minikube
   get_url:
     url: "{{ minikube_url }}"
-    dest: /usr/local/bin/minikube
+    dest: "{{ bin_dir }}/minikube"
     mode: a+x
     force: true
+
+- name: Install crictl
+  unarchive:
+    url: "{{ crictl_url }}"
+    remote_src: true
+    dest: "{{ bin_dir }}"
+    creates: "{{ bin_dir }}/crictl"
+    mode: a+x
+
+- name: Install critest
+  unarchive:
+    url: "{{ critest_url }}"
+    remote_src: true
+    dest: "{{ bin_dir }}"
+    creates: "{{ bin_dir }}/critest"
+    mode: a+x
+
+- name: Install krew
+  unarchive:
+    url: "{{ krew_url }}"
+    remote_src: true
+    dest: "{{ bin_dir }}"
+    creates: "{{ bin_dir }}/krew"
+    mode: a+x

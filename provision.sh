@@ -42,13 +42,13 @@ ubuntu | debian)
   rm -rf ~/.cache/pip/* /var/cache/apt/*
   ;;
 *)
-  echo "No actions provided for $distribution"
+  echo "No actions provided for ${distribution}"
   ;;
 esac
 
 if [ -d "/mnt/c/Users/${hostUser}/.ssh" ]; then
   echo "Linking ssh keys"
-  cp -rf "/mnt/c/Users/$hostUser/.ssh" "$HOME/.ssh"
+  cp -rf "/mnt/c/Users/${hostUser}/.ssh" "$HOME/.ssh"
 fi
 
 [ -d ${ansibleDirectory} ] || mkdir ${ansibleDirectory}

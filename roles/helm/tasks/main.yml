@@ -1,15 +1,14 @@
 ---
 - name: Install {{ role_name }}
   unarchive:
-    src: https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz
+    src: "{{ helm_url }}"
     remote_src: true
-    dest: /usr/local/bin/
-    creates: /usr/local/bin/helm
+    dest: /usr/local/bin/helm
     extra_opts: [--strip=1]
 
 - name: Install Helmfile
   get_url:
-    url: https://github.com/roboll/helmfile/releases/download/v{{ helmfile_version }}/helmfile_linux_amd64
+    url: "{{ helmfile_url }}"
     dest: /usr/local/bin/helmfile
     mode: a+x
 

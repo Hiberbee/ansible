@@ -8,5 +8,7 @@ docker_packages:
   - docker-ce
 hadolint_version: 1.18.0
 hadolint_url: https://github.com/hadolint/hadolint/releases/download/v{{ hadolint_version }}/hadolint-Linux-x86_64
-container_structure_test_version: 1.8.0
-container_structure_test_url: https://storage.googleapis.com/container-structure-test/v{{ container_structure_test_version }}/container-structure-test-linux-amd64
+pip_packages:
+  - docker
+  - docker-compose
+docker_service_started: false

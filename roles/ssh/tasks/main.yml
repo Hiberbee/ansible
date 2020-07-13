@@ -64,3 +64,10 @@
     enabled: true
     state: started
   when: ssh_directory.stat.exists
+
+- name: Start {{ role_name }} service
+  service:
+    name: sshd
+    state: started
+    enabled: true
+  when: ssh_service_started
