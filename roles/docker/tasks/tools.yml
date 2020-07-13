@@ -1,0 +1,12 @@
+---
+- name: Install hadolint
+  get_url:
+    url: "{{ hadolint_url }}"
+    dest: /usr/local/bin/hadolint
+    mode: a+x
+
+- name: Install container structure test
+  get_url:
+    url: "{{ container_structure_test_url }}"
+    dest: /usr/local/bin/container-structure-test
+    mode: a+x

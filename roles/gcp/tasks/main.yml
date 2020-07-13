@@ -1,0 +1,8 @@
+---
+- name: Install {{ role_name }} dependencies
+  unarchive:
+    src: "{{ gcloud_url }}"
+    remote_src: true
+    dest: "{{ bin_dir }}"
+    creates: "{{ bin_dir }}/gcloud"
+    mode: a+x

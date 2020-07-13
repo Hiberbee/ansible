@@ -1,7 +1,21 @@
 ---
-- name: Install {{ role_name }} client
+- name: Install {{ role_name }} CLI client
   get_url:
-    url: https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes_version }}/bin/linux/amd64/kubectl
-    dest: /usr/local/bin/
+    url: "{{ kubernetes_url }}"
+    dest: /usr/local/bin/kubectl
+    mode: a+x
+    force: true
+
+- name: Install {{ role_name }} Kops client
+  get_url:
+    url: "{{ kops_url }}"
+    dest: /usr/local/bin/kops
+    mode: a+x
+    force: true
+
+- name: Install {{ role_name }} Minikube
+  get_url:
+    url: "{{ minikube_url }}"
+    dest: /usr/local/bin/minikube
     mode: a+x
     force: true

@@ -8,12 +8,6 @@
   apt:
     package: "{{ fish_packages }}"
 
-#- name: Install ccat
-#  unarchive:
-#    src: "{{ ccat_url }}"
-#    dest: /usr/local/bin/ccat
-#    remote_src: true
-
 - name: Set as default shell
   user:
     user: "{{ ansible_user }}"

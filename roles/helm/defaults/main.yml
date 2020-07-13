@@ -1,2 +1,2 @@
-helm_version: "3.2.4"
-helmfile_version: "0.119.1"
+helm_version: 3.2.4
+helmfile_version: 0.119.1

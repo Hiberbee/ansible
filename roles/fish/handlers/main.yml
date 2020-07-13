@@ -4,7 +4,7 @@
     executable: "{{ fish_binary_path }}"
 
 - name: setup_fish
-  shell: "/tmp/setup-fish.sh"
+  shell: /tmp/setup-fish.sh
   args:
     executable: /bin/bash
     creates: "{{ starship_binary_path }}"

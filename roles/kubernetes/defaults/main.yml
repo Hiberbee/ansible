@@ -1,1 +1,6 @@
-kubernetes_version: 1.18.0
+kubernetes_version: 1.18.5
+kubernetes_url: https://storage.googleapis.com/kubernetes-release/release/v{{ kubernetes_version }}/bin/linux/amd64/kubectl
+kops_version: 1.17.0
+kops_url: https://github.com/kubernetes/kops/releases/download/v{{ kops_version }}/kops-linux-amd64
+minikube_version: 1.11.0
+minikube_url: https://storage.googleapis.com/minikube/releases/v{{ minikube_version }}/minikube-linux-amd64

@@ -18,9 +18,10 @@
 - hosts: ops
   roles:
     - aws
-    - docker
-    - terraform
-    - skaffold
-    - kubernetes
-    - helm
+    - gcp
     - digitalocean
+    - docker
+    - skaffold
+    - helm
+    - kubernetes
+    - terraform

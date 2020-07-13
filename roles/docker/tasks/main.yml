@@ -43,51 +43,8 @@
     name: docker
     enabled: true
 
-- name: Create {{ role_name }} registry credentials
-  copy:
-    content: "{{ docker_registry_htpasswd }}"
-    dest: "{{ docker_registry_htpasswd_path }}"
-  loop:
-    - docker.service
-    - docker.socket
-  loop_control:
-    loop_var: template
+- name: Setup {{ role_name }} registry
+  include_tasks: registry.yml
 
-- name: Start {{ role_name }} service
-  docker_volume:
-    name: registry
-    state: present
-
-- name: Start {{ role_name }} registry container
-  docker_container:
-    restart_policy: always
-    name: registry
-    image: library/registry:2
-    ports:
-      - 5000:5000
-    env:
-      REGISTRY_HTTP_SECRET: docker
-      REGISTRY_AUTH: htpasswd
-      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
-      REGISTRY_AUTH_HTPASSWD_PATH: "{{ docker_registry_htpasswd_path }}"
-    volumes:
-      - registry:/var/lib/registry
-      - "{{ docker_registry_htpasswd_path }}:{{ docker_registry_htpasswd_path }}"
-
-- name: Authenticate {{ role_name }} registry
-  docker_login:
-    url: 127.0.0.1:5000
-    username: "{{ docker_registry_username }}"
-    password: "{{ docker_registry_password }}"
-
-- name: Start {{ role_name }} API container
-  docker_container:
-    restart_policy: always
-    name: docker
-    image: alpine/socat
-    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
-    ports:
-      - 127.0.0.1:2376:2375
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
+- name: Setup {{ role_name }} tools
+  include_tasks: tools.yml

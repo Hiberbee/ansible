@@ -1,1 +1,2 @@
 skaffold_version: 1.12.0
+skaffold_url: https://storage.googleapis.com/skaffold/releases/v{{ skaffold_version }}/skaffold-linux-amd64

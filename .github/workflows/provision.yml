@@ -1,0 +1,16 @@
+name: Provision workflow
+on:
+  push:
+    branches:
+      - master
+jobs:
+  provision:
+    name: Provision with Ansible
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Setup Ansible
+        run: ./provision.sh
+      - name: Run Ansible playbook
+        run: ansible-playbook playbook.yml
