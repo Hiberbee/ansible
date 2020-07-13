@@ -15,8 +15,13 @@ build:
     - image: debian
       docker:
         target: debian
+    - image: centos
+      docker:
+        target: centos
 test:
   - image: ubuntu
     structureTests: [structure-test.yaml]
   - image: debian
+    structureTests: [structure-test.yaml]
+  - image: centos
     structureTests: [structure-test.yaml]

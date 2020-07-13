@@ -22,7 +22,7 @@
 
 - name: Install crictl
   unarchive:
-    url: "{{ crictl_url }}"
+    src: "{{ crictl_url }}"
     remote_src: true
     dest: "{{ bin_dir }}"
     creates: "{{ bin_dir }}/crictl"
@@ -30,7 +30,7 @@
 
 - name: Install critest
   unarchive:
-    url: "{{ critest_url }}"
+    src: "{{ critest_url }}"
     remote_src: true
     dest: "{{ bin_dir }}"
     creates: "{{ bin_dir }}/critest"
@@ -38,7 +38,7 @@
 
 - name: Install krew
   unarchive:
-    url: "{{ krew_url }}"
+    src: "{{ krew_url }}"
     remote_src: true
     dest: "{{ bin_dir }}"
     creates: "{{ bin_dir }}/krew"

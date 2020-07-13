@@ -20,8 +20,9 @@ alpine)
   find /usr/lib/python3.8/site-packages | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
   ;;
 centos | fedora | redhat)
-  yum update -y
-  yum install -y ansible
+  dnf update
+  dnf install python3 python3-pip wget -y
+  pip3 install ansible
   find /usr/lib/python3/site-packages | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
   ;;
 arch)

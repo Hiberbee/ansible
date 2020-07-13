@@ -1,0 +1,9 @@
+---
+- name: Add {{ role_name }} Debian repository
+  apt_repository:
+    repo: "{{ fish_repository }}"
+    update_cache: true
+
+- name: Install {{ role_name }}
+  apt:
+    package: "{{ fish_packages }}"
