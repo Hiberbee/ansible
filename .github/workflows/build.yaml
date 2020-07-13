@@ -1,0 +1,35 @@
+name: Skaffold Pipiline
+on: [push]
+env:
+  DOCKER_REGISTRY: docker.pkg.github.com/hiberbee/ansible-collection-devops
+jobs:
+  build:
+    name: Build & Test Docker images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository sources
+        uses: actions/checkout@v2
+
+      - name: Authenticate with Docker credentials
+        uses: azure/docker-login@v1
+        with:
+          login-server: $DOCKER_REGISTRY
+          username: ${{ github.actor }}
+          password: ${{ secrets.docker_password }}
+
+      - name: Get Skaffold version
+        uses: hiberbee/github-action-skaffold@master
+        with:
+          args: version
+          default-repo: $DOCKER_REGISTRY
+
+      - name: Build Skaffold artifacts
+        uses: hiberbee/github-action-skaffold@master
+        with:
+          args: build
+
+      - name: Test container structure
+        uses: hiberbee/github-action-skaffold@master
+        with:
+          entrypoint: container-structure-test
+          args: test --config container-structure-test.yaml --image skaffold

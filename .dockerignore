@@ -1,7 +1,8 @@
-.git
-.github
+.git*
+*lint
 .idea
 Dockerfile
 LICENSE
-README.md
-*lint
+*.md
+skaffold.yaml
+structure-test.yaml

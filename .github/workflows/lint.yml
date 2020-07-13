@@ -1,14 +1,14 @@
 name: Lint workflow
-on: [push]
+on: push
 jobs:
-  build:
+  lint:
     name: Lint Code Base
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Lint Code
-        uses: docker://github/super-linter:v2.2.0
+        uses: docker://github/super-linter:v3.3.0
         env:
           LINTER_RULES_PATH: ${{ github.workspace }}
           VALIDATE_ALL_CODEBASE: false

@@ -3,6 +3,9 @@ kind: Config
 metadata:
   name: ansible-collection-devops
 build:
+  local:
+    concurrency: 0
+    useBuildkit: true
   tagPolicy:
     sha256: {}
   artifacts:
@@ -12,3 +15,8 @@ build:
     - image: debian
       docker:
         target: debian
+test:
+  - image: ubuntu
+    structureTests: [structure-test.yaml]
+  - image: debian
+    structureTests: [structure-test.yaml]

@@ -3,13 +3,14 @@
   unarchive:
     src: "{{ helm_url }}"
     remote_src: true
-    dest: /usr/local/bin/helm
+    dest: "{{ bin_dir }}"
+    creates: "{{ bin_dir }}/helm"
     extra_opts: [--strip=1]
 
 - name: Install Helmfile
   get_url:
     url: "{{ helmfile_url }}"
-    dest: /usr/local/bin/helmfile
+    dest: "{{ bin_dir }}/helmfile"
     mode: a+x
 
 - name: Install {{ role_name }} diff plugin
