@@ -2,7 +2,7 @@ name: Provision workflow
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   provision:
     name: Provision with Ansible

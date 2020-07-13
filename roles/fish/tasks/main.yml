@@ -17,4 +17,5 @@
   get_url:
     url: "{{ fish_setup_script_url }}"
     dest: /tmp/setup-fish.sh
+    mode: a+x
   notify: setup_fish

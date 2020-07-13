@@ -4,3 +4,15 @@ fileExistenceTests:
   - name: docker
     path: /usr/local/bin/docker
     shouldExist: true
+  - name: kubectl
+    path: /usr/local/bin/kubectl
+    shouldExist: true
+  - name: skaffold
+    path: /usr/local/bin/skaffold
+    shouldExist: true
+  - name: ansible
+    path: /usr/local/bin/ansible
+    shouldExist: true
+  - name: terraform
+    path: /usr/local/bin/terraform
+    shouldExist: true
