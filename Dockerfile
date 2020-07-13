@@ -4,7 +4,7 @@ WORKDIR /etc/ansible
 RUN /entrypoint.sh
 
 FROM debian:10 AS debian
-COPY provision.sh /docker-entrypoint-init.d
+COPY entrypoint.sh /
 WORKDIR /etc/ansible
 RUN /entrypoint.sh
 
