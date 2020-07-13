@@ -6,5 +6,4 @@
 - name: setup_fish
   shell: /tmp/setup-fish.sh
   args:
-    executable: /bin/bash
     creates: "{{ fish_config_dir }}/functions/fish_prompt.fish"
