@@ -5,6 +5,5 @@ python_packages:
   - python3-pip
 pip_packages:
   - jq
-  - awscli
   - bzt
-
+bin_dir: /usr/local/bin

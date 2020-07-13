@@ -6,6 +6,9 @@ build:
   tagPolicy:
     sha256: {}
   artifacts:
-    - image: ansible/ubuntu
+    - image: ubuntu
       docker:
         target: ubuntu
+    - image: debian
+      docker:
+        target: debian

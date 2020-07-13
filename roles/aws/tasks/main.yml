@@ -1,6 +1,6 @@
 - name: Install {{ role_name }} dependencies
   pip:
-    name: "{{ aws_dependency }}"
-  loop: "{{ aws_dependencies }}"
+    name: "{{ aws_pip_dependency }}"
+  loop: "{{ aws_pip_dependencies }}"
   loop_control:
-    loop_var: aws_dependency
+    loop_var: aws_pip_dependency

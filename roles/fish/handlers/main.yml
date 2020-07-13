@@ -1,8 +1,3 @@
-- name: fisher
-  shell: fisher
-  args:
-    executable: "{{ fish_binary_path }}"
-
 - name: setup_fish
   shell: /tmp/setup-fish.sh
   args:

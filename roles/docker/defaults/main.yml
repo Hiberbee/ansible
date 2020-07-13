@@ -8,7 +8,7 @@ docker_packages:
   - docker-ce
 hadolint_version: 1.18.0
 hadolint_url: https://github.com/hadolint/hadolint/releases/download/v{{ hadolint_version }}/hadolint-Linux-x86_64
-pip_packages:
+docker_pip_dependencies:
   - docker
   - docker-compose
 docker_service_started: false

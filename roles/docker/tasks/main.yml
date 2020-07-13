@@ -14,11 +14,11 @@
 
 - name: Install {{ role_name }} python packages
   pip:
-    name: "{{ pip_package }}"
+    name: "{{ docker_pip_dependency }}"
     executable: /usr/bin/pip3
-  loop: "{{ pip_packages }}"
+  loop: "{{ docker_pip_dependencies }}"
   loop_control:
-    loop_var: pip_package
+    loop_var: docker_pip_dependency
 
 - name: Create {{ role_name }} config directory
   file:
@@ -45,9 +45,6 @@
   loop_control:
     loop_var: template
 
-- name: Setup {{ role_name }} registry
-  include_tasks: registry.yml
-
 - name: Setup {{ role_name }} tools
   include_tasks: hadolint.yml
 
@@ -56,4 +53,8 @@
     name: docker
     state: started
     enabled: true
+  when: docker_service_started
+
+- name: Setup {{ role_name }} registry
+  include_tasks: registry.yml
   when: docker_service_started

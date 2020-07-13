@@ -12,7 +12,7 @@
   alternatives:
     name: python
     path: /usr/bin/python{{ python_version }}
-    link: /usr/local/bin/python
+    link: "{{ bin_dir }}/python"
 
 - name: Install {{ role_name }} packages
   pip:
