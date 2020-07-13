@@ -18,10 +18,3 @@
     url: "{{ fish_setup_script_url }}"
     dest: /tmp/setup-fish.sh
   notify: setup_fish
-
-- name: Install {{ role_name }} dependency manager
-  get_url:
-    url: https://git.io/fisher
-    dest: "{{ fish_config_dir }}/functions/fisher.fish"
-    mode: a+x
-  notify: fisher

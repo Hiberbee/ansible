@@ -13,4 +13,5 @@ jobs:
       - name: Setup Ansible
         run: ./provision.sh
       - name: Run Ansible playbook
+        working-directory: /etc/ansible
         run: ansible-playbook playbook.yml

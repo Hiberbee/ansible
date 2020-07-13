@@ -7,4 +7,4 @@
   shell: /tmp/setup-fish.sh
   args:
     executable: /bin/bash
-    creates: "{{ starship_binary_path }}"
+    creates: "{{ fish_config_dir }}/functions/fish_prompt.fish"
