@@ -1,17 +1,14 @@
 FROM ubuntu:20.04 AS ubuntu
-COPY provision.sh /usr/local/bin/provision
+COPY entrypoint.sh /
 WORKDIR /etc/ansible
-RUN /usr/local/bin/provision \
- && ansible-playbook playbook.yml
+RUN /entrypoint.sh
 
 FROM debian:10 AS debian
-COPY provision.sh /usr/local/bin/provision
+COPY provision.sh /docker-entrypoint-init.d
 WORKDIR /etc/ansible
-RUN /usr/local/bin/provision \
- && ansible-playbook playbook.yml
+RUN /entrypoint.sh
 
 FROM centos:8 AS centos
-COPY provision.sh /usr/local/bin/provision
+COPY entrypoint.sh /entrypoint.sh
 WORKDIR /etc/ansible
-RUN /usr/local/bin/provision \
- && ansible-playbook playbook.yml
+RUN /entrypoint.sh

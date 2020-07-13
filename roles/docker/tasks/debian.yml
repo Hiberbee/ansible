@@ -1,0 +1,13 @@
+---
+- name: Add {{ role_name }} repository key
+  apt_key:
+    url: "{{ docker_deb_repository_key }}"
+
+- name: Install {{ role_name }} repository
+  apt_repository:
+    repo: "{{ docker_deb_repository }}"
+    update_cache: true
+
+- name: Install {{ role_name }} dependencies
+  apt:
+    package: docker-ce

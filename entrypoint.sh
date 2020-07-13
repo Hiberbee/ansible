@@ -65,5 +65,7 @@ fi
 
 if [ -f "playbook.yml" ]; then
   echo "Found Ansible playbook, running tasks..."
-  ansible-galaxy install -r requirements.yml
+  ansible-playbook "playbook.yml"
+else 
+  ansible-playbook "${@}"
 fi

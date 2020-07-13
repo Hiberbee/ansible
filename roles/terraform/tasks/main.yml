@@ -3,5 +3,6 @@
   unarchive:
     src: "{{ terraform_url }}"
     remote_src: true
-    dest: /usr/local/bin/terraform
+    dest: "{{ bin_dir }}"
+    creates: "{{ bin_dir }}/terraform"
     mode: a+x
