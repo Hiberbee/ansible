@@ -1,3 +1,4 @@
+---
 - name: Install {{ role_name }} dependencies
-  dnf:
-    update_cache: true
+  apk:
+    name: "{{ git_packages }}"

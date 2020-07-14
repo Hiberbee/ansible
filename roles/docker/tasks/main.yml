@@ -43,13 +43,5 @@
 - name: Setup {{ role_name }} tools
   include_tasks: hadolint.yml
 
-- name: Start {{ role_name }} service
-  service:
-    name: docker
-    state: started
-    enabled: true
-  when: docker_service_started
-
 - name: Setup {{ role_name }} registry
   include_tasks: registry.yml
-  when: docker_service_started

@@ -1,0 +1,4 @@
+---
+- name: Install
+  dnf:
+    pkg: "{{ git_packages }}"

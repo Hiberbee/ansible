@@ -3,6 +3,5 @@
   unarchive:
     src: "{{ gcloud_url }}"
     remote_src: true
-    dest: "{{ bin_dir }}"
-    creates: "{{ bin_dir }}/gcloud"
-    mode: a+x
+    dest: "{{ gcloud_install_dir }}"
+    creates: "{{ gcloud_install_dir }}/gcloud"

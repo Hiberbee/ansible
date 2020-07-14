@@ -1,14 +1,47 @@
 name: Build workflow
 on: push
 jobs:
-  build:
+  ubuntu:
     name: Build & test Docker images
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository sources
         uses: actions/checkout@v2
-      - name: Build Skaffold artifacts
+      - name: Ubuntu build
         uses: hiberbee/github-action-skaffold@master
         with:
           args: build
           build-image: ubuntu
+  debian:
+    name: Build & test Docker images
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository sources
+        uses: actions/checkout@v2
+      - name: Debian build
+        uses: hiberbee/github-action-skaffold@master
+        with:
+          args: build
+          build-image: debian
+  alpine:
+    name: Build & test Docker images
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository sources
+        uses: actions/checkout@v2
+      - name: Alpine build
+        uses: hiberbee/github-action-skaffold@master
+        with:
+          args: build
+          build-image: alpine
+  centos:
+    name: Build & test Docker images
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository sources
+        uses: actions/checkout@v2
+      - name: Alpine build
+        uses: hiberbee/github-action-skaffold@master
+        with:
+          args: build
+          build-image: centos

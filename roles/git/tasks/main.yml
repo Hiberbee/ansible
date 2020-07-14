@@ -1,6 +1,6 @@
-- name: Install {{ role_name }} packages
-  apt:
-    name: "{{ git_packages }}"
+---
+- name: Install {{ role_name }} dependencies
+  include_tasks: "{{ ansible_os_family | lower }}.yml"
 
 - name: Configure git
   git_config:

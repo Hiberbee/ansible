@@ -67,7 +67,7 @@ fi
 
 if [ -f "playbook.yml" ]; then
   echo "Found Ansible playbook, running tasks..."
-  ansible-playbook "playbook.yml"
+  ansible-playbook playbook.yml
 else
   ansible-playbook "${@}"
 fi
