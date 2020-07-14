@@ -1,11 +1,11 @@
 ---
-- name: Download {{ role_name }}
+- name: Download {{ role_name }} Debian package
   get_url:
     url: "{{ fish_deb_url }}"
     dest: /tmp/fish.deb
   when: ansible_distribution == 'Debian'
 
-- name: Add {{ role_name }} Debian repository
+- name: Install {{ role_name }} from Debian package
   apt:
     deb: /tmp/fish.deb
   when: ansible_distribution == 'Debian'
@@ -15,7 +15,7 @@
     repo: "{{ fish_ubuntu_repository }}"
   when: ansible_distribution == 'Ubuntu'
 
-- name: Add {{ role_name }} Debian repository
+- name: Install {{ role_name }}
   apt:
     name: "{{ fish_packages }}"
   when: ansible_distribution == 'Ubuntu'
