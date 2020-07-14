@@ -1,0 +1,4 @@
+---
+- name: Install {{ role_name }} dependencies
+  apt:
+    package: "{{ sdkman_dependencies }}"

@@ -1,0 +1,4 @@
+---
+- name: Install {{ role_name }} dependencies
+  dnf:
+    name: "{{ sdkman_dependencies }}"

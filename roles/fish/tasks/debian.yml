@@ -3,7 +3,19 @@
   get_url:
     url: "{{ fish_deb_url }}"
     dest: /tmp/fish.deb
+  when: ansible_distribution == 'Debian'
 
 - name: Add {{ role_name }} Debian repository
   apt:
     deb: /tmp/fish.deb
+  when: ansible_distribution == 'Debian'
+
+- name: Add {{ role_name }} Debian repository
+  apt_repository:
+    repo: "{{ fish_ubuntu_repository }}"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Add {{ role_name }} Debian repository
+  apt:
+    name: "{{ fish_packages }}"
+  when: ansible_distribution == 'Ubuntu'

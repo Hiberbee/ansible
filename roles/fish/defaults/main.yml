@@ -1,4 +1,5 @@
 fish_version: 3.1.2-1
+fish_ubuntu_repository: ppa:fish-shell/release-3
 fish_deb_url: https://download.opensuse.org/repositories/shells:/fish/Debian_10/amd64/fish_{{ fish_version }}_amd64.deb
 fish_setup_script_url: https://raw.githubusercontent.com/Hiberbee/fish-shell/master/init.sh
 paths:

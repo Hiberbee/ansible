@@ -1,0 +1,4 @@
+---
+- name: Install {{ role_name }} dependencies
+  apk:
+    name: "{{ sdkman_dependencies }}"
