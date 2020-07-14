@@ -1,3 +1,4 @@
 gcloud_version: 299.0.0
 gcloud_url: https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-{{ gcloud_version }}-linux-x86_64.tar.gz
 bin_dir: /usr/local/bin
+gcloud_install_dir: /opt
