@@ -12,16 +12,20 @@ build:
   artifacts:
     - image: ubuntu
       docker:
-        target: ubuntu
-    - image: alpine
-      docker:
-        target: alpine
+        buildArgs:
+          distro: ubuntu:20.04
     - image: debian
       docker:
-        target: debian
+        buildArgs:
+          distro: debian:10
+    - image: alpine
+      docker:
+        buildArgs:
+          distro: alpine:3.12
     - image: centos
       docker:
-        target: centos
+        buildArgs:
+          distro: centos:8
 test:
   - image: ubuntu
     structureTests: [structure-test.yaml]

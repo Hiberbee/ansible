@@ -1,3 +1,4 @@
+---
 - name: Install {{ role_name }} dependencies
   pip:
     name: "{{ aws_pip_dependency }}"
