@@ -5,6 +5,7 @@ metadata:
 build:
   local:
     concurrency: 0
+    push: false
     useBuildkit: true
   tagPolicy:
     sha256: {}
@@ -12,6 +13,9 @@ build:
     - image: ubuntu
       docker:
         target: ubuntu
+    - image: alpine
+      docker:
+        target: alpine
     - image: debian
       docker:
         target: debian
@@ -24,4 +28,6 @@ test:
   - image: debian
     structureTests: [structure-test.yaml]
   - image: centos
+    structureTests: [structure-test.yaml]
+  - image: alpine
     structureTests: [structure-test.yaml]

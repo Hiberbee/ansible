@@ -1,18 +1,18 @@
 schemaVersion: 2.0.0
 
 fileExistenceTests:
-  - name: docker
-    path: /usr/local/bin/docker
-    shouldExist: true
-  - name: kubectl
-    path: /usr/local/bin/kubectl
-    shouldExist: true
-  - name: skaffold
-    path: /usr/local/bin/skaffold
-    shouldExist: true
-  - name: ansible
-    path: /usr/local/bin/ansible
-    shouldExist: true
-  - name: terraform
-    path: /usr/local/bin/terraform
-    shouldExist: true
+  - { name: ansible, path: /usr/local/bin/ansible, isExecutableBy: any, shouldExist: true }
+  - { name: aws, path: /usr/local/bin/aws, isExecutableBy: any, shouldExist: true }
+  - { name: container-structure-test, path: /usr/local/bin/container-structure-test, isExecutableBy: any, shouldExist: true }
+  - { name: crictl, path: /usr/local/bin/crictl, isExecutableBy: any, shouldExist: true }
+  - { name: docker, path: /usr/local/bin/docker, isExecutableBy: any, shouldExist: true }
+  - { name: docker-compose, path: /usr/local/bin/docker-compose, isExecutableBy: any, shouldExist: true }
+  - { name: doctl, path: /usr/local/bin/doctl, isExecutableBy: any, shouldExist: true }
+  - { name: hadolint, path: /usr/local/bin/hadolint, isExecutableBy: any, shouldExist: true }
+  - { name: helm, path: /usr/local/bin/helm, isExecutableBy: any, shouldExist: true }
+  - { name: helmfile, path: /usr/local/bin/helmfile, isExecutableBy: any, shouldExist: true }
+  - { name: kops, path: /usr/local/bin/kops, isExecutableBy: any, shouldExist: true }
+  - { name: kubectl, path: /usr/local/bin/kubectl, isExecutableBy: any, shouldExist: true }
+  - { name: minikube, path: /usr/local/bin/minikube, isExecutableBy: any, shouldExist: true }
+  - { name: skaffold, path: /usr/local/bin/skaffold, isExecutableBy: any, shouldExist: true }
+  - { name: terraform, path: /usr/local/bin/terraform, isExecutableBy: any, shouldExist: true }

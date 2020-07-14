@@ -1,6 +1,11 @@
 ---
-- name: Install {{ role_name }} utilities repository
-  include_tasks: "{{ ansible_os_family | lower }}.yml"
+- name: Install {{ role_name }}
+  unarchive:
+    src: "{{ docker_url }}"
+    remote_src: true
+    dest: "{{ bin_dir }}"
+    creates: "{{ bin_dir }}/docker"
+    extra_opts: [--strip=1]
 
 - name: Install {{ role_name }} python packages
   pip:
