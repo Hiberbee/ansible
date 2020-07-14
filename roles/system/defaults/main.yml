@@ -2,6 +2,7 @@ debian_packages:
   - gnupg2
   - net-tools
   - curl
+  - iptables
   - netcat
 
 alpine_packages:
