@@ -40,7 +40,7 @@ jobs:
     steps:
       - name: Checkout repository sources
         uses: actions/checkout@v2
-      - name: Alpine build
+      - name: CentOS build
         uses: hiberbee/github-action-skaffold@master
         with:
           args: build

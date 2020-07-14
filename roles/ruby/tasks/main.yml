@@ -2,7 +2,6 @@
 - name: Add {{ role_name }} Debian repository
   apt_repository:
     repo: "{{ ruby_repository }}"
-    update_cache: true
 
 - name: Install {{ role_name }} v{{ ruby_version }}
   apt:

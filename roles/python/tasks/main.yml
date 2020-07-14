@@ -2,7 +2,6 @@
 - name: Add {{ role_name }} Debian repository
   apt_repository:
     repo: "{{ python_repository }}"
-    update_cache: true
 
 - name: Install {{ role_name }} v{{ python_version }}
   apt:

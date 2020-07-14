@@ -1,9 +1,9 @@
 ---
-- name: Add {{ role_name }} Debian repository
-  apt_repository:
-    repo: "{{ fish_repository }}"
-    update_cache: true
+- name: Download {{ role_name }}
+  get_url:
+    url: "{{ fish_deb_url }}"
+    dest: /tmp/fish.deb
 
-- name: Install {{ role_name }}
+- name: Add {{ role_name }} Debian repository
   apt:
-    package: "{{ fish_packages }}"
+    deb: /tmp/fish.deb

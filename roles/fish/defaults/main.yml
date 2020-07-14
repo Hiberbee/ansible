@@ -1,6 +1,6 @@
-fish_repository: ppa:fish-shell/release-3
+fish_version: 3.1.2-1
+fish_deb_url: https://download.opensuse.org/repositories/shells:/fish/Debian_10/amd64/fish_{{ fish_version }}_amd64.deb
 fish_setup_script_url: https://raw.githubusercontent.com/Hiberbee/fish-shell/master/init.sh
-ccat_url: https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
 paths:
   - /usr/local/bin
 fish_packages:
